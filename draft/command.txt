@@ -1,0 +1,2 @@
+1. npx create-next-app@latest
+2. pnpm add  axios react-hot-toast jsonwebtoken @prisma/client zod
