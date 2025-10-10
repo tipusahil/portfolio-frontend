@@ -6,9 +6,10 @@ export const apiRequest = async (
     method?: string;
     body?: any;
     cache?: RequestCache; // "default" | "force-cache" | "no-cache" | "reload" | "no-store" | "only-if-cached"
+    next? : NextFetchRequestConfig;
   } = {}
 ) => {
-  const { method = "GET", body, cache = "default" } = options;
+  const { method = "GET", body, cache = "default",next} = options;
 
 try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${endpoint}`, {
@@ -18,6 +19,8 @@ try {
     },
     body: body ? JSON.stringify(body) : undefined,
     cache,
+    next,
+    
   });
 
   if (!res.ok) {

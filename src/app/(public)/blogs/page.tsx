@@ -12,7 +12,7 @@ export const metadata :Metadata = {// metadata server compo te use kora jai shud
 
 const AllBlogsPage = async () => {
   try {
-     const blogs = await getAllBlogs();
+     const blogs :IBlog[] = await getAllBlogs();
 console.log(blogs)
   return (
     <div className="py-30 max-w-7xl mx-auto">

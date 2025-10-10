@@ -44,7 +44,7 @@ export function Navbar({ className }: { className?: string }) {
               title="Tour-Management-App"
               href="https://frontend-ph-tour-management-system.vercel.app/"
               src="/navbar images/tour.png"
-              description="A web app for managing tours, bookings, and schedules with a responsive modern design."
+              description="A Full-Stack web app for managing tours, bookings, and schedules with a responsive modern design."
             />
             <ProductItem
               title="Retro-Forum"

@@ -21,7 +21,7 @@ const [mounted, setMounted] = useState(false);
   }
 
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 border-2 pt-3">
       <div className="max-w-7xl mx-auto ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -40,14 +40,16 @@ const [mounted, setMounted] = useState(false);
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16  items-center justify-center ">
           {/* Enhanced Profile Image */}
-          <motion.div
+    <div className='h-full '>
+            <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex justify-center "
+            className="flex justify-center"
+            // className="absolute top-2/5 -translate-y-1/6 flex items-center justify-center border-2 border-red-500 z-20"
           >
-            <div className={`relative w-full md:w-[50%]  rounded-2xl ${
+            <div className={`relative w-full md:w-[50%]    rounded-2xl ${
               theme==="dark" ? 'glass-premium-dark' : 'glass-premium'
             } p-2 float-animation card-premium gpu-accelerated`}>
               <div className="w-full h-full  bg-gradient-to-br from-blue-500 via-purple-600 to-cyan-500 rounded-2xl flex items-center justify-center relative overflow-hidden">
@@ -61,6 +63,7 @@ const [mounted, setMounted] = useState(false);
             </div>
           </motion.div>
 
+    </div>
           {/* Enhanced About Content */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}

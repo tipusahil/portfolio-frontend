@@ -10,35 +10,35 @@ export default function BlogCard({ blog }: { blog: IBlog }) {
       href={`/blogs/${blog.id}`}
       className="block group transform hover:-translate-y-1 transition-transform duration-300"
     >
-      <SpotlightCard className="bg-white border-2 border-green-500 dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+      <SpotlightCard className="bg-white  flex min-h-[400px] h-full flex-col dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
       
           {blog.thumbnail ? (
-            <div className="relative h-56 w-full overflow-hidden">
+            <div className="relative border border-1 h-56 w-full overflow-hidden rounded-md">
               <Image
                 src={`${blog?.thumbnail}`}
                 alt={blog.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover   group-hover:scale-105 transition-transform duration-300"
               />
             </div>
           ) : (
-            <div className="h-56 w-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
+            <div className="h-56 w-full  rounded-md  bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
               No Image
             </div>
           )}
 
-          <div className="p-6">
+          <div className="p-6  w-full  flex flex-col flex-1 ">
             <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
               {blog.title}
             </h3>
 
-            <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
+            <p className="text-gray-700 flex-1 dark:text-gray-300 mb-4 line-clamp-3">
               {blog.content}
               {/* {blog.content.substring(0, 100)}... */}
             </p>
 
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div className="flex items-center">
                 <Image
                   src={
                     blog.author?.picture ||
@@ -69,7 +69,7 @@ export default function BlogCard({ blog }: { blog: IBlog }) {
                   )}
                 </span>
               </div>
-              <span className="text-gray-500 dark:text-gray-400 text-sm">
+              <span className="text-gray-500   dark:text-gray-400 text-sm">
                 {blog.view} views
               </span>
             </div>

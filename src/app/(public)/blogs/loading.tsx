@@ -1,10 +1,11 @@
+import Loading from "@/components/ui/Loading";
 
-const BlogLoading = () => {
+const BlogsLoadingPage = () => {
     return (
-        <div className='flex flex-col items-center justify-center h-screen'>
-            <h1 className="text-4xl">loading...</h1>
+        <div className="pt-30">
+            <Loading/>
         </div>
     );
 };
 
-export default BlogLoading;
+export default BlogsLoadingPage;

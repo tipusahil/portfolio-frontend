@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import React from 'react';
 import DownloadButton from './DownloadButton';
 import { Button } from '@/components/ui/button';
+import { Spotlight } from '@/components/ui/spotlight-new';
 
 const Hero: React.FC = () => {
 const {theme} = useTheme();
@@ -15,7 +16,16 @@ const {theme} = useTheme();
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-8">
+  <div
+  //  className="h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden"
+  // className="h-[40rem] w-full rounded-md relative overflow-hidden flex items-center justify-center
+  //               bg-white/90 dark:bg-black/90
+  //               backdrop-blur-sm
+  //               antialiased"
+   >
+
+      {/* <Spotlight /> */}
+     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-8">
       <div className="max-w-7xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -113,6 +123,7 @@ const {theme} = useTheme();
         </motion.div>
       </div>
     </section>
+ </div>
   );
 };
 

@@ -14,10 +14,14 @@ const NavbarFlow2 = () => {
           { text: "Home", url: "/" },
           { text: "About", url: "/about" },
           { text: "Skills", url: "/skills" },
+          // { text: "Projects", url: "/projects" },
           {
             text: "Projects",
             submenu: (
               <div className="flex flex-col space-y-2">
+                <HoverLink url="/projects">
+                  All Projects
+                </HoverLink>
                 <HoverLink url="https://greenline-bus-tickets.surge.sh">
                   Bus-Ticket-Service
                 </HoverLink>

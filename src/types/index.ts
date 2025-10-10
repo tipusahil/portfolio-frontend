@@ -16,4 +16,16 @@ export interface IBlog {
     picture : string
     isVerified : boolean
   }
+};
+
+
+export interface IProject  {
+  id: number
+  title: string
+  description: string
+  thumbnail: string
+  link: string
+  createdAt: string
+  updatedAt: string
 }
+
