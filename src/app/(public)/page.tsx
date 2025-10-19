@@ -1,8 +1,10 @@
 import BlogCard from '@/components/modules/Blogs/BlogCard';
 import GlobeCities from '@/components/modules/Home/Globe';
 import Hero from '@/components/modules/hero/Hero';
+import { Button } from '@/components/ui/button';
 
 import { IBlog } from '@/types';
+import Link from 'next/link';
 
 const HomePage =async () => {
 
@@ -140,8 +142,8 @@ console.log(blogs.data);
     <Hero />
       <GlobeCities/>
 
-      <h2 className="text-center my-5 text-4xl">Featured Posts</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-2 max-w-6xl mx-auto my-5">
+      <h2 className="text-center my-5 xl sm:text-2xl md:text-3xl text-4xl">Featured Posts</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-2 max-w-6xl mx-auto my-5">
         {
           blogs?.slice(0,3).map((blog : IBlog) => (
           // blogs?.data?.map((blog : IBlog) => (
@@ -149,6 +151,17 @@ console.log(blogs.data);
           ))
         }
       </div>
+
+<div className='flex flex-col my-3 items-center justify-center'>
+<Link href="/blogs">
+  <Button
+    className="btn-premium text-primary-foreground shadow-glow hover:scale-105"
+  >
+    Read more blog
+  </Button>
+</Link>
+
+</div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import { Calendar, Home, PlusCircleIcon, Search, Settings } from "lucide-react";
+
+import { Calendar, Home, PlusCircleIcon, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -12,7 +13,9 @@ import {
 } from "@/components/ui/sidebar";
 // import LogoutCompo from "./shared/LogoutCompo";
 import Link from "next/link";
+import LogoutCompo from "./modules/auth/Logout";
 import { SearchForm } from "./search-form";
+
 
 // Menu items.
 const items = [
@@ -50,10 +53,10 @@ export function AppSidebar() {
 
         <SearchForm />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent >
         <SidebarGroup>
           {/* <SidebarGroupLabel>Application</SidebarGroupLabel> */}
-          <SidebarGroupContent className="flex flex-col  min-h-screen justify-between py-4">
+          <SidebarGroupContent className="flex flex-col  min-h-screen  py-4">
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
@@ -67,7 +70,7 @@ export function AppSidebar() {
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
-{/* <LogoutCompo/> */}
+<LogoutCompo/>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

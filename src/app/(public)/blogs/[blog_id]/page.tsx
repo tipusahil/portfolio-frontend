@@ -14,15 +14,16 @@ export const generateMetadata = async ({
   // const blog = await getBlogById(blog_id);
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blogs/${blog_id}`, {
     next:{
-      revalidate: 60
+      tags:["BLOGS"]
     }
   });
  const blog =await  res.json();
-  console.log(blog);
+  // console.log({blog});
 
-  return {
-  title: `${blog?.title} | Tipusahil ` || "Blog Not Found",
-  description: blog?.content || "No description available",
+  return  {
+  title: `${await blog?.data?.title} | Tipusahil ` || "Blog Not Found",
+  description: blog?.data?.content || "No description available",
+  
   };
 };
 // ---------end-generateMetadata ------
@@ -77,7 +78,9 @@ export const generateStaticParams = async () => {
       throw new Error(`API call failed: ${res.status}`);
     }
     const { data: blogs } = await res.json();
-    return blogs?.data?.slice(0, 3).map((blog: IBlog) => ({
+    // console.log("--------------blogs-------------",blogs);// important for debuging
+    // console.log("--------------blogs.data-------------",blogs.data);// important for debuging
+    return blogs?.slice(0, 3).map((blog: IBlog) => ({
       blog_id: String(blog.id),
     })) || [];
   } catch (error) {
@@ -99,7 +102,10 @@ try {
     const { blog_id } = await params;
   //   console.log( params);
 
-  const blog = await getBlogById(blog_id,"default");
+  const blog = await getBlogById(blog_id,"default");// ei line diyew data fetch hobe,  kaj hobe, niser 2line diyew data fetch hobe.
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blogs/${blog_id}`);
+  // const {data: blog} = await res.json();
+// console.log("-------blog", await blog)
 
   if (!blog) {
   return <div>Blog not found</div>;

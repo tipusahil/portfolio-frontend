@@ -76,6 +76,22 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+    /* --- Buttons / Glow --- */
+  --btn-glow-light: 0 0 20px rgba(14, 165, 233, 0.3), 0 0 40px rgba(167, 139, 250, 0.2), 0 0 60px rgba(186, 230, 253, 0.1);
+  --btn-glow-dark: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.2), 0 0 60px rgba(6, 182, 212, 0.1);
+
+  /* --- Glass --- */
+  --glass-bg-light: rgba(255, 255, 255, 0.15);
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+  --glass-bg-dark: rgba(255, 255, 255, 0.08);
+  --glass-border-dark: rgba(255, 255, 255, 0.12);
+
+  /* --- Gradients --- */
+  --gradient-primary: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+  --gradient-primary-hover: linear-gradient(90deg, #2563eb, #7c3aed, #0891b2);
+
+  --gradient-btn-overlay: linear-gradient(90deg, #60a5fa, #c084fc, #22d3ee);
 }
 
 .dark {
@@ -110,6 +126,21 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  
+  /* Glow */
+  --btn-glow-light: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.2), 0 0 60px rgba(6, 182, 212, 0.1);
+  --btn-glow-dark: 0 0 20px rgba(14, 165, 233, 0.3), 0 0 40px rgba(167, 139, 250, 0.2), 0 0 60px rgba(186, 230, 253, 0.1);
+
+  /* Glass */
+  --glass-bg-light: rgba(255, 255, 255, 0.08);
+  --glass-border-light: rgba(255, 255, 255, 0.12);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(90deg, #9333EA , #3B82F6,#22D3EE);
+  --gradient-primary-hover: linear-gradient(90deg, #a242fc , #488dfc,#2cddf8);
+  /* --gradient-primary: linear-gradient(90deg, #ccdffe, #436fac, #02013dd0); */
+  /* --gradient-primary-hover: linear-gradient(90deg, #1d4ed8, #6d28d9, #0e7490); */
 }
 
 @layer base {
@@ -121,6 +152,83 @@
   }
 }
 
+
+/* ------custom style nise---------------- */
+/* ---------------------only for premium btn------------- */
+/* ----------------------------- */
+/* Gradient Background Container */
+/* ----------------------------- */
+.bg-gradient-premium {
+  /* background: linear-gradient(to bottom right, #4d1d9553, #1e3b8a33);  */
+  /* background: linear-gradient(to bottom right, #4d1d9553, #1e3b8a33);  */
+}
+
+/* --------------lugo----- */
+/* globals.css */
+@media (min-width: 200px) and (max-width: 500px) {
+  .tipusahil_lugo {
+    background-color: red !important; /* Tailwind ক্লাস ওভাররাইড করতে */
+  }
+  .dark .tipusahil_lugo {
+    background-color: red !important; /* ডার্ক মোডে */
+  }
+}
+/* --------------lugo----- */
+
+/* globals.css */
+.bg-gradient-premium {
+  /* background: linear-gradient(135deg, #1a1a40, #1e3a8a);  */
+    background: linear-gradient(to bottom right, #4d1d9553, #1e3b8a33); 
+  transform: translateZ(0); /* iOS-এ ফোর্স রেন্ডার */
+  -webkit-transform: translateZ(0); /* Safari-এর জন্য */
+}
+
+@supports (-webkit-backdrop-filter: blur(20px)) {
+  .bg-gradient-premium {
+    -webkit-backdrop-filter: blur(20px); /* iOS-এ ফলব্যাক */
+  }
+}
+
+.testtting{
+     color: rgb(18,113,255);
+     color: rgb(221,74,255);
+     color: rgb(0,220,255);
+     color: rgb(200,50,50);
+     color: rgb(139, 139, 42);
+     color: rgb(140,100,255);
+     color: rgb(51, 2, 2);
+     color: rgb(1, 4, 59);
+}
+.btn-premium {
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--btn-glow-dark);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-premium:hover {
+  background: var(--gradient-primary-hover);
+}
+
+.glass {
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border-light);
+  backdrop-filter: blur(15px);
+}
+
+.dark .glass {
+  background: var(--glass-bg-dark);
+  border: 1px solid var(--glass-border-dark);
+}
+
+
+/* ---------------------only for premium btn------------- */
+
+/* -----------socieal btn style ---- */
+
+
+/* -----------socieal btn style ---- */
 /* ------------------ custom css----------- */
 /* --------------------------- */
 .bg1 {
@@ -131,6 +239,8 @@
     rgb(158, 43, 230),
     rgb(88, 1, 238)
   );
+
+
 
   /* Glassmorphism effect */
   background-clip: padding-box;
@@ -209,14 +319,16 @@ html {
 }
 
 .glass-premium {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)); */
+   background: linear-gradient(135deg, rgba(92, 157, 247, 0), rgb(4, 8, 126));
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .glass-premium-dark {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)); */
+  background: linear-gradient(135deg, rgba(92, 157, 247, 0), rgb(4, 8, 126));
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
@@ -464,7 +576,7 @@ html {
 
 ::-webkit-scrollbar-thumb {
 
-  background: linear-gradient(135deg, #080a85, #8bc5ea);
+  background: linear-gradient(135deg, #7d0883, #0b97d7);
   border-radius: 4px;
 }
 

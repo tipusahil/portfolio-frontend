@@ -1,152 +1,165 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
- 
+import toast from "react-hot-toast";
 
 // ---------------
+// Type declaration for custom user fields
 declare module "next-auth" {
   interface Session {
-    user : {
-      id: string,
-      email : string | null,
-      role : string | null,
-    //   name: string | null,
-    //   image : string | null,
+    user: {
+      id: string;
+      email: string | null;
+      role: string | null;
+      accessToken?: string; // ✅ অ্যাড করো
+      refreshToken?: string; // ✅ অ্যাড করো
+      name: string | null;
+      image: string | null;
     };
   }
 
   interface User {
-        id: string,
-      email : string | null,
-      role : string | null,
-    //   name: string | null,
-    //   image : string | null,
+    id: string;
+    email: string | null;
+    role: string | null;
+    accessToken?: string; // ✅ অ্যাড করো
+    refreshToken?: string; // ✅ অ্যাড করো
+    name: string | null;
+    image: string | null;
   }
 }
 // ---------------
 
-console.log("token is", process.env.GOOGLE_CLIENT_SECRET);
+// console.log("google client secrettoken is", process.env.GOOGLE_CLIENT_SECRET);
 
-export const authOptions : NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
+
+    // ------------------ Credentials Provider -------------------
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. "Sign in with...")
       name: "Credentials",
-      // `credentials` is used to generate a form on the sign in page.
-      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-      // e.g. domain, username, password, 2FA token, etc.
-      // You can pass any HTML attribute to the <input> tag through the object.
+
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "jhon.due@gmail.com" },
+        email: {
+          label: "Email",
+          type: "text",
+          placeholder: "jhon.due@gmail.com",
+        },
         password: { label: "Password", type: "password" },
       },
+
       async authorize(credentials) {
-      // async authorize(credentials, req) {
-  
-if(!credentials?.email || !credentials.password) {
-  console.error("Email Or Password is missing!");
-  return null;
-}
+        // 🔹 Step 1: Basic validation
+        if (!credentials?.email || !credentials.password) {
+          console.error("❌ Email or Password missing!");
+          return null;
+        }
 
-try {
-
-      const res = await fetch( `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,{
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: credentials?.email,
-          password: credentials?.password,
-        }),
-      }
-    );
-
-    // console.log("response from backend: ", res);
-
-    
-    const response = await res.json();
-    // console.log("response from authOptions :",response)// debugging and response kmn astece dekar jonno drkr ei log ta
-
-      // const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
-
-      
-    if (!res.ok) {
-      // console.error("User Login failed!", response);
-      if(response?.message ==='user not found!') {
-      console.log("go & register fast");
-      // return router.push("/register")
-      return null;
-    
-      }
-      return null;
-    }
-
-        if (!res.ok) {
-            // 👇 এখানে check করো
-            if (response?.message === "user not found!") {
-              throw new Error("user-not-found");
+        try {
+          // 🔹 Step 2: API call to backend
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: credentials.email,
+                password: credentials.password,
+              }),
+              // credentials: "include", // ✅ এটা অ্যাড করো: যাতে ব্যাকএন্ড থেকে কুকি (accessToken) ব্রাউজারে সেট হয়// jeheto ami browser er cookie te accessToken paccina,tai backend er response thekei accessToken nicci,tai credentials:"include" ta comment kore raklam karon next-auth accessToken na niye nijer next.session.token diye kaj calai nicce,, karon JSON response theke nibe token,,, browser er cookie theke nibena
             }
-            throw new Error("login-failed");
+          );
+          console.log("📦 Res from backend:", res);
+
+          // console.log("📦 Login response status:", res.status, res.statusText); // ✅ ডিবাগ
+          // console.log(
+          //   "📦 Login response headers:",
+          //   Object.fromEntries(res.headers)
+          // ); // ✅ ডিবাগ
+          // 🔹 Step 3: Get JSON response
+          const response = await res.json();
+
+          console.log("📦 Response from backend:", response);
+
+          // 🔹 Step 4: Backend status check
+          // ⚠️ এখানে তোমার মূল ভুল ছিল:
+          // তোমার backend থেকে response আসে:
+          // {
+          //   "user": { "email": "tipusahil.ctg@gmail.com", "id": 1, "role": "owner" },
+          //   "expires": "2025-11-17T10:40:55.220Z"
+          // }
+          //
+          // কিন্তু তুমি check করছো: response.success && response.data — যা নেই।
+
+          // 🔹 Step 4: Backend status check
+          if (response?.success && response?.data) {
+            const user = response.data;
+
+            // 🔹 Step 5: Return user object (NextAuth expects this)
+            return {
+              id: user.id.toString(), // ✅ id string করো যাতে Next-Auth সেশন সাপোর্ট করে
+              email: user.email,
+              role: user.role,
+              // accessToken রিটার্ন করার দরকার নেই, কারণ কুকি থেকে নিবো
+              accessToken: response.accessToken, // ✅ JSON থেকে নাও
+              refreshToken: response.refreshToken, // ✅ JSON থেকে নাও
+              name: user.name,
+              image: user.picture,
+            };
           }
 
-
-    const {data : user} = response;
-    // console.log("authOption theke user :",user);// ei log taw kovi drkr 
-    if (res.ok   &&   user?.id) {
-      // return user;
-      return { id : user?.id, name : user?.name, email : user?.email, role : user?.role, image : user?.picture };
-    } else {
-      return null;
-    };
-
-
-} catch (error: unknown ) {
-  console.log(error);
-    // const errorMessage = typeof error === "object" && error !== null && "message" in error
-    //   ? (error as { message?: string }).message
-    //   : undefined;
-  return null;
-}
+          // ❌ যদি invalid হয়
+          console.error("❌ Invalid credentials or user not found:", response);
+          return null;
+        } catch (error) {
+          console.error("💥 Authorize error:", error);
+          return null;
+        }
       },
     }),
   ],
 
-  callbacks : {
-async jwt({ token , user }) {
-if(user){
-  token.id = user?.id;
-  token.role = user?.role;
-};
-return token;
-},
+  // ------------------ Callbacks -------------------
+  callbacks: {
+    async jwt({ token, user }) {
+      // user first login করলে এখানে add হয়
+      if (user) {
+        token.id = user.id;
+        token.role = user.role;
+        token.email = user.email;
+        // accessToken jwt-এ সেট করার দরকার নেই কারণ কুকি থেকে নিবো
+        token.accessToken = user.accessToken; // ✅ jwt-এ স্টোর করো
+        token.refreshToken = user.refreshToken; // ✅ jwt-এ স্টোর করো
+      }
+      return token;
+    },
 
-// --------
-async session({session, token }){
-  if(session?.user){
-    session.user.id = token?.id as string;
-    session.user.role = token?.role as string;
-  };
+    async session({ session, token }) {
+      // client-side session এ ডেটা রাখা
+      if (session?.user) {
+        session.user.id = token?.id as string;
+        session.user.role = token?.role as string;
+        session.user.email = token?.email as string;
+        // accessToken session-এ সেট করার দরকার নেই কারণ কুকি থেকে নিবো
+        session.user.accessToken = token?.accessToken as string; // ✅ সেশনে স্টোর করো
+        session.user.refreshToken = token?.refreshToken as string; // ✅ সেশনে স্টোর করো
+      }
 
-  return session;
-}
+      return session;
+    },
   },
 
+  // ------------------ Misc Config -------------------
   secret: process.env.NEXTAUTH_SECRET,
 
   pages: {
-    signIn: "/login", // 🔑 Login form এ redirect করবে // protected route e jete caile login page e niye jabe, jodi token na take
-    signOut: "/", // 🔑 Logout করলে home page এ redirect করবে// protected route e jete caile
-    error: "/login", // (optional) error হলে কোথায় redirect করবে
-    /* 
-      pages.signIn: user যখন protected route এ যাবে আর login না করা থাকে, তখন তোমার custom /login পেজে নিয়ে যাবে।
-
-pages.signOut: logout এর পর কোথায় redirect হবে সেটা fix করতে পারো।
-
-চাইলে pages.error দিয়ে custom error page-ও দেখাতে পারো।
- */
+    signIn: "/login", // 🔑 Login form এ redirect করবে
+    signOut: "/", // 🔑 Logout করলে home page এ redirect করবে
+    error: "/login", // optional
   },
 };

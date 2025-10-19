@@ -60,7 +60,7 @@ const ListItem: React.FC<ListItemProps> = ({
 }) => {
   return (
     <div
-      className="relative"
+      className="relative "
       onMouseEnter={() => setSelected(element)}
       onMouseLeave={(e) => {
         const dropdown = e.currentTarget.querySelector(".dropdown-content");
@@ -89,7 +89,7 @@ const ListItem: React.FC<ListItemProps> = ({
               <motion.div
                 transition={springTransition}
                 layoutId="selected"
-                className="dropdown-content bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl"
+                className="dropdown-content  bg-background/70  backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl"
                 style={{
                   maxWidth: "min(90vw, 400px)",
                 }}
@@ -117,7 +117,7 @@ export const HoverLink: React.FC<HoverLinkProps> = ({
     <Link
       href={url}
       onClick={onPress}
-      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+      className="block px-4 py-2  border ml-3 m-1  bg-background/40  hover:bg-background/70 rounded-lg text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
     >
       {children}
     </Link>
@@ -266,8 +266,8 @@ const NavbarFlow: React.FC<NavbarFlowProps> = ({
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={emblemMotion}
-              // className="bg-transparent rounded-full"
-              className="bg-gray-200/30  dark:bg-black/30 backdrop-blur-sm  text-gray-800 dark:text-gray-200 px-2 lg:px-3 py-2 lg:py-2 rounded-full font-semibold text-lg lg:text-xl z-10 flex-shrink-0"
+              // className="bg-transparent rounded-full bg-gray-200/30  dark:bg-black/30"
+              className="tipusahil_lugo backdrop-blur-sm bg-gray-200/30  dark:bg-black/30 text-gray-800 dark:text-gray-200 px-2 lg:px-3 py-2 lg:py-2 rounded-full font-semibold text-lg lg:text-xl z-10 flex-shrink-0"
             >
               {emblem}
             </motion.div>
@@ -279,13 +279,14 @@ const NavbarFlow: React.FC<NavbarFlowProps> = ({
               padding: "8px 20px",
             }}
             animate={navMotion}
-            className="bg-gray-200/30zz dark:bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center gap-2 lg:gap-6 z-10 flex-shrink-0"
+            className="bg-gray-200/30 dark:bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center gap-2 lg:gap-6 z-10 flex-shrink-0"
             onMouseLeave={() => setSelectedSubmenu(null)}
           >
             {links.map((element) => (
               <div key={element.text} >
                 {element.submenu ? (
                   <ListItem
+                  
                     setSelected={setSelectedSubmenu}
                     selected={selectedSubmenu}
                     element={element.text}
@@ -299,7 +300,7 @@ const NavbarFlow: React.FC<NavbarFlowProps> = ({
                   >
                     <Link
                       href={element.url || "#"}
-                      className="text-gray-800   dark:text-gray-200 font-medium text-base lg:text-xl whitespace-nowrap hover:text-gray-900 dark:hover:text-white transition-colors py-1"
+                      className="text-gray-800  dark:text-gray-200 font-medium text-base lg:text-xl whitespace-nowrap hover:text-gray-900 dark:hover:text-white transition-colors py-1"
                     >
                       {element.text}
                     </Link>
@@ -574,7 +575,7 @@ const NavbarFlow: React.FC<NavbarFlowProps> = ({
             >
               <div
                 // className="rounded-full bg-gray-200/30  dark:bg-black/30 backdrop-blur-sm text-gray-800 dark:text-gray-200 overflow-hidden"
-                className="bg-gray-200/30  dark:bg-black/30 backdrop-blur-sm text-gray-800 dark:text-gray-200 p-2 py-3 lg:px-8 lg:py-4 rounded-full font-semibold text-lg lg:text-xl z-10 flex-shrink-0"
+                className="bg-gray-200/30 sm[350px]:bg-red-500 dark:bg-black/30 backdrop-blur-sm text-gray-800 dark:text-gray-200 p-2 py-2 lg:px-8 lg:py-4 rounded-full font-semibold text-lg lg:text-xl z-10 flex-shrink-0"
               >
                 {emblem}
               </div>
@@ -621,19 +622,19 @@ const NavbarFlow: React.FC<NavbarFlowProps> = ({
               maxHeight: mobileMenuVisible ? "80vh" : 0,
             }}
             transition={{ duration: 0.3 }}
-            className="absolute left-0 right-0 top-full z-40 overflow-y-auto border-t border-gray-200/40 dark:border-gray-800/40 bg-gray-50/95 dark:bg-black/30 backdrop-blur"
+            className="absolute left-0 right-0 top-full  z-40 overflow-y-auto border-t border-gray-200/40 dark:border-gray-800/40 bg-background/70 backdrop-blur-2xl"
           >
-            <div className="container py-4 px-4">
-              <nav className="flex flex-col space-y-3">
+            <div className="container py-4 px-3 rounded-xl  bg-background/40 border mx-1">
+              <nav className="flex flex-col bg-background/40  space-y-3">
                 {links.map((element, idx) => (
-                  <div key={element.text} className="space-y-2">
+                  <div key={element.text} className="space-y-2 border rounded-lg bg-background/60 hover:bg-background/80">
                     {element.submenu ? (
                       <>
                         <button
-                          className="flex items-center justify-between w-full text-gray-800 dark:text-gray-200 font-medium text-base py-2 px-4 rounded-lg hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-colors border-b border-gray-200 dark:border-gray-800"
+                          className="flex  items-center justify-between w-full text-gray-800 dark:text-gray-200 font-medium text-base py-2 px-4 rounded-lg bg-background/60  hover:bg-background/80 transition-colors border-b border-gray-200 dark:border-gray-800"
                           onClick={() => toggleSection(element.text)}
                         >
-                          <span>{element.text}</span>
+                          <span >{element.text}</span>
                           <span>
                             {openedSections[element.text] ? (
                               <ArrowUp className="h-4 w-4" />
@@ -658,7 +659,7 @@ const NavbarFlow: React.FC<NavbarFlowProps> = ({
                       <Link
                         href={element.url || "#"}
                         onClick={hideMobileMenu}
-                        className="text-gray-800 dark:text-gray-200 font-medium text-base py-2 px-4 rounded-lg hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-colors border-b border-gray-200 dark:border-gray-800 block"
+                        className="text-gray-800  dark:text-gray-200 font-medium text-base py-2 px-4 rounded-lg  bg-background/60  hover:bg-background/80  transition-colors border-b-2 border-gray-200 dark:border-gray-800 block"
                       >
                         {element.text}
                       </Link>

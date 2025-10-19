@@ -21,7 +21,7 @@ const [mounted, setMounted] = useState(false);
   }
 
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 border-2 pt-3">
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 pt-3">
       <div className="max-w-7xl mx-auto ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -30,12 +30,12 @@ const [mounted, setMounted] = useState(false);
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className={`text-4xl sm:text-5xl rounded-2xl py-1 lg:text-6xl font-bold mb-6 ${
-            theme==="dark" ? 'text-white glow-premium' : 'text-gray-900 glow-premium-light'
-          }`}>
+          
+          <h2 className="text-foreground text-4xl sm:text-5xl rounded-2xl py-1 lg:text-6xl font-bold mb-6 glow-premium-light dark:glow-premium">
             About Me
+     
           </h2>
-          <div className="w-32 h-2 bg-gradient-to-r from-blue-500 via-purple-600 to-cyan-500 mx-auto rounded-full"></div>
+          <div className="w-32 h-2 bg-gradient-to-r btn-premium  mx-auto rounded-full"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16  items-center justify-center ">
@@ -72,15 +72,11 @@ const [mounted, setMounted] = useState(false);
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h3 className={`text-3xl font-bold ${
-              theme==="dark" ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h3 className="text-foreground/70 text-3xl font-bold">
               Muhammad Mostafa Tipu Sahil
             </h3>
             
-<p className={`text-lg leading-relaxed ${
-  theme==="dark" ? 'text-gray-300' : 'text-gray-600'
-}`}>
+<p className="text-foreground/90 text-lg leading-relaxed">
   I'm <span className="font-semibold">Muhammad Mostafa Tipu Sahil</span>, a 
   passionate <span className="font-semibold">Full-Stack Web Developer</span> and 
   tech enthusiast who believes in the power of code to create meaningful impact.  
@@ -89,9 +85,7 @@ const [mounted, setMounted] = useState(false);
   applications that feel intuitive and engaging.
 </p>
 
-<p className={`text-lg leading-relaxed ${
-  theme==="dark" ? 'text-gray-300' : 'text-gray-600'
-}`}>
+<p className="text-foreground/70/90 text-lg leading-relaxed">
   My skillset spans across <span className="font-semibold">JavaScript, TypeScript, 
   React, Next.js, Node.js, Express.js, MongoDB, and PostgreSQL</span>.  
   I focus on writing clean, maintainable code while crafting seamless user 
@@ -99,9 +93,7 @@ const [mounted, setMounted] = useState(false);
   complex problems into elegant digital solutions.
 </p>
 
-<p className={`text-lg leading-relaxed ${
-  theme==="dark" ? 'text-gray-300' : 'text-gray-600'
-}`}>
+<p className="text-foreground/70/90 text-lg leading-relaxed">
   Beyond web development, I am deeply inspired by the future of technology — 
   particularly in <span className="font-semibold">Artificial Intelligence, AI Agents, and SaaS 
   products</span>. My vision is to combine full-stack development with AI-driven 
@@ -109,9 +101,7 @@ const [mounted, setMounted] = useState(false);
   individuals worldwide.
 </p>
 
-<p className={`text-lg leading-relaxed ${
-  theme==="dark" ? 'text-gray-300' : 'text-gray-600'
-}`}>
+<p className="text-foreground/70/90 text-lg leading-relaxed">
   What sets me apart is not just my technical knowledge, but my 
   <span className="font-semibold">dedication, consistency, and growth mindset</span>.  
   I spend long focused hours every day coding, learning, and improving.  
@@ -126,10 +116,10 @@ const [mounted, setMounted] = useState(false);
     href="https://linkedin.com/in/tipusahil"
     target="_blank"
     rel="noopener noreferrer"
-    className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 btn-premium ${
+    className={`flex  items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 btn-premium ${
       theme === "dark"
-        ? "glass-premium-dark text-white hover:bg-white/20 glow-premium"
-        : "glass-premium text-gray-800 hover:bg-black/10 glow-premium-light"
+        ? "glass-premium-dark text-foreground/70 hover:bg-white/20 glow-premium"
+        : "glass-premium text-foreground hover:bg-black/10 glow-premium-light"
     }`}
   >
     <Image
@@ -148,8 +138,8 @@ const [mounted, setMounted] = useState(false);
     rel="noopener noreferrer"
     className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 btn-premium ${
       theme === "dark"
-        ? "glass-premium-dark text-white hover:bg-white/20 glow-premium"
-        : "glass-premium text-gray-800 hover:bg-black/10 glow-premium-light"
+        ? "glass-premium-dark text-foreground/70 hover:bg-white/20 glow-premium"
+        : "glass-premium  text-foreground hover:bg-black/10 glow-premium-light"
     }`}
   >
     <Image
@@ -161,6 +151,7 @@ const [mounted, setMounted] = useState(false);
     <span className="text-lg">GitHub</span>
   </Link>
 </div>
+
 
           </motion.div>
         </div>

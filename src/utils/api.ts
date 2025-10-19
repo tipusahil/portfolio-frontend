@@ -19,7 +19,7 @@ try {
     },
     body: body ? JSON.stringify(body) : undefined,
     cache,
-    next,
+    next: next,
     
   });
 

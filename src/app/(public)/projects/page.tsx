@@ -16,7 +16,7 @@ const AllProjectsPage = async () => {
     return (
       <div className="py-20 max-w-7xl mx-auto z-10">
         <h2 className="text-center text-4xl font-bold text-slate-800 dark:text-slate-100">
-          All Projects
+          ✨ All Projects ✨
         </h2>
         <div className="grid  grid-cols-1  md:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto my-10">
           {projects?.map((project : IProject) => (

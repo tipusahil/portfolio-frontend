@@ -1,8 +1,12 @@
 export { default } from "next-auth/middleware";
 
 // export const config = { matcher: ["/dashboard"] };
-export const config = { matcher: [] };
+export const config = { matcher: ["/dashboard"] };
 
+export const  middleware = async () =>{
+console.log("hello from middleware")
+};
+//  ei middleware file diei nextjs project e public and private route protected kore. 
 // ----------------nextjs middleware --------------
 // import { NextResponse, NextRequest } from "next/server";
 

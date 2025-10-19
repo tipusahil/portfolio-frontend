@@ -61,7 +61,7 @@ export default function Component() {
                 <ImageIcon className="size-4 opacity-60" />
               </div>
               <p className="mb-1.5 text-sm font-medium">Drop your image here</p>
-              <p className="text-muted-foreground text-xs">
+              <p className="text-foreground/80 text-xs">
                 SVG, PNG, JPG or GIF (max. {maxSizeMB}MB)
               </p>
               <Button
@@ -106,7 +106,7 @@ export default function Component() {
       <p
         aria-live="polite"
         role="region"
-        className="text-muted-foreground mt-2 text-center text-xs"
+        className="text-foreground/80 mt-2 text-center text-xs"
       >
         Single image uploader w/ max size (drop area + button) ∙{" "}
         <a

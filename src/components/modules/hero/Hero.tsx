@@ -1,129 +1,130 @@
 "use client";
-import { motion } from 'framer-motion';
-import { ChevronDownIcon } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import React from 'react';
-import DownloadButton from './DownloadButton';
-import { Button } from '@/components/ui/button';
-import { Spotlight } from '@/components/ui/spotlight-new';
+import { motion } from "framer-motion";
+import { ChevronDownIcon } from "lucide-react";
+import { useTheme } from "next-themes";
+import React, { useEffect, useState } from "react";
+import DownloadButton from "./DownloadButton";
+import { Button } from "@/components/ui/button";
+import { TextReveal } from "../Home/TextReveal";
+import { useRouter } from "next/navigation";
 
 const Hero: React.FC = () => {
-const {theme} = useTheme();
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null; // theme না লোড হওয়া পর্যন্ত রেন্ডার বন্ধ
 
   const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-  <div
-  //  className="h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden"
-  // className="h-[40rem] w-full rounded-md relative overflow-hidden flex items-center justify-center
-  //               bg-white/90 dark:bg-black/90
-  //               backdrop-blur-sm
-  //               antialiased"
-   >
-
-      {/* <Spotlight /> */}
-     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-8">
-      <div className="max-w-7xl mx-auto text-center">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-8 py-6"
+    >
+      <div className="max-w-7xl mx-auto text-center w-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
-          {/* Main Heading with Enhanced Styling */}
-          <motion.h1
+           <motion.h1
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className={`text-5xl sm:text-6xl lg:text-8xl font-black leading-tight ${
-              theme==="dark" ? 'text-white' : 'text-gray-900'
+            className={`text-4xl sm:text-5xl lg:text-7xl  xl:text-8xl font-black leading-tight ${
+            // className={`text-5xl sm:text-6xl lg:text-8xl font-black leading-tight ${
+              theme === "dark" ? "text-white" : "text-gray-900"
             }`}
-            style={{ fontFamily: 'Poppins, sans-serif', marginTop: '3rem' }}
+            style={{ fontFamily: "Poppins, sans-serif", marginTop: "3rem" }}
           >
-            <span className={`${ theme==="dark" ? 'text-white ' : 'text-gray-900'}`}>Hi, I'm</span>
-            <span className={`block mt-4 ${ theme==="dark" ? 'gradient-text-hero' : 'gradient-text-hero-light'}`}>
+            <span className="text-foreground">Hi, I'm</span>
+            <span
+              className={`block mt-4 ${
+                theme === "dark"
+                  ? "gradient-text-hero"
+                  : "gradient-text-hero-light"
+              }`}
+            >
               Tipusahil
             </span>
           </motion.h1>
 
-          {/* Subheading */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className={`text-xl sm:text-2xl lg:text-3xl font-semibold ${
-               theme==="dark" ? 'text-gray-300' : 'text-gray-600'
-            } max-w-4xl mx-auto`}
+            className="break-words text-center text-base sm:text-lg md:text-xl lg:text-3xl font-semibold max-w-full sm:max-w-3xl lg:max-w-6xl mx-auto overflow-wrap-break-word"
           >
             Full-Stack Developer | Building Modern Web Solutions
           </motion.p>
 
-          {/* Description */}
+          <div className="flex flex-col items-center justify-center">
+            <TextReveal />
+          </div>
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className={`text-base sm:text-lg lg:text-xl ${
-               theme==="dark" ? 'text-gray-400' : 'text-gray-500'
-            } max-w-3xl mx-auto leading-relaxed`}
+            className="text-foreground/70/95 max-w-full sm:max-w-2xl mx-auto leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl break-words overflow-wrap-break-word"
           >
-            Passionate about creating exceptional digital experiences with cutting-edge technologies.
-            Specializing in React, Node.js, and modern web development with a focus on premium user experiences.
+            Passionate about creating exceptional digital experiences with
+            cutting-edge technologies. Specializing in React, Node.js, and
+            modern web development with a focus on premium user experiences.
           </motion.p>
 
-          {/* Enhanced CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="pt-12"
+            className="pt-8 sm:pt-12"
           >
- <div className='flex flex-col md:flex-row lg:flex-row xl-flex-row items-center justify-center  space-y-3 md:space-x-3  lg:space-x-4  xl:space-x-6 md:space-y-2'>
-             <Button
-              onClick={scrollToProjects}
-              className={`group relative self-center px-6  py-5 text-xl font-bold rounded-2xl transition-all duration-300 btn-premium gpu-accelerated ${
-                 theme==="dark"
-                  ? 'bg-gradient-to-r from-blue-500 via-purple-600 to-cyan-500 text-white hover:from-blue-600 hover:via-purple-700 hover:to-cyan-600 glow-premium'
-                  : 'bg-gradient-to-r from-blue-600 via-purple-700 to-cyan-600 text-white hover:from-blue-700 hover:via-purple-800 hover:to-cyan-700 glow-premium-light'
-              } shadow-2xl`}
-            >
-        
-               <span className="relative z-10 px-4 py-3">Explore My Work</span>
-       
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-            </Button>
-{/* ------ */}
-           <DownloadButton className=''/>
- </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                onClick={() => router.push("/projects")}
+                className="btn-premium text-primary shadow-glow w-full sm:w-auto"
+              >
+                Explore My Work
+              </Button>
+
+              <DownloadButton className="btn-premium text-primary shadow-glow w-full sm:w-auto" />
+            </div>
           </motion.div>
 
-          {/* Enhanced Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="pt-20"
+            className="pt-12 sm:pt-20"
           >
             <motion.div
               animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="flex justify-center"
             >
               <ChevronDownIcon
-                className={`h-10 w-10 cursor-pointer transition-all duration-300 hover:scale-110 ${
-                   theme==="dark" ? 'text-gray-400 hover:text-white glow-premium' : 'text-gray-500 hover:text-gray-900 glow-premium-light'
+                className={`h-8 w-8 sm:h-10 sm:w-10 rounded-2xl border-[0.8] cursor-pointer transition-all duration-300 hover:scale-110 ${
+                  theme === "dark"
+                    ? "text-gray-400 hover:text-white glow-premium"
+                    : "text-gray-500 hover:text-gray-900 glow-premium-light"
                 }`}
-                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => router.push("/about")}
               />
             </motion.div>
           </motion.div>
         </motion.div>
       </div>
     </section>
- </div>
   );
 };
 

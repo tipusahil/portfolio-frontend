@@ -17,7 +17,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <PinContainer title={project.title} href={project.link || "link not provided yet"}>
         <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[20rem] h-[24rem] bg-gradient-to-b from-slate-800/50 to-slate-800/0 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
           {/* Thumbnail */}
-          <div className="relative w-full h-36 overflow-hidden rounded-lg border border-slate-700/50">
+          <div className="relative w-full h-36 bg-foreground overflow-hidden rounded-lg border border-slate-700/50">
             <Image
               src={project.thumbnail || "/navbar-images/retro.png"}
               alt={project.title}
@@ -40,9 +40,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <Link
               href={project.link || "link not provided yet"}
               target="_blank"
-              className="text-sky-400 text-sm font-medium hover:underline"
+              className="text-sky-600 text-sm font-medium hover:underline"
             >
-              View →
+              Live Link →
             </Link>
           </div>
         </div>

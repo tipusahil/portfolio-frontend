@@ -39,10 +39,11 @@ const NavbarFlow2 = () => {
           },
            { text: "Blogs", url: "/blogs" },
           { text: "Services", url: "/services" },
-          { text: "Experience", url: "/experience" },
+          { text: "Dashboard", url: "/dashboard" },
+          // { text: "Experience", url: "/experience" },
+          { text: "Login", url: "/login" },
 
           // { text: "Testimonials", url: "/testimonials" },
-          { text: "Dashboard", url: "/dashboard" },
         ]}
         rightComponent={<ThemeSwitchIcon />}
         // rightComponent={<div>a</div>}

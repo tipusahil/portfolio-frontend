@@ -98,7 +98,7 @@ export default function SingleImageUploader({
               <p className="mb-1.5 text-sm font-medium">
                 Drop your {message} image here or click to browse
               </p>
-              <p className="text-muted-foreground text-xs">
+              <p className="text-foreground/70 text-xs">
                 Max size: {maxSizeMB}MB
               </p>
             </div>
@@ -131,7 +131,7 @@ export default function SingleImageUploader({
       {/* <p
         aria-live="polite"
         role="region"
-        className="text-muted-foreground mt-2 text-center text-xs"
+        className="text-foreground/70 mt-2 text-center text-xs"
       >
         Single image uploader w/ max size ∙{" "}
         <a

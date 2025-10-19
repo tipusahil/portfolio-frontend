@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 
 interface ThemeSwitchProps extends React.HTMLAttributes<HTMLDivElement> {
   modes?: string[];
@@ -90,7 +90,7 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
                       "flex h-6 w-6 cursor-pointer items-center justify-center rounded-full z-10 transition-opacity duration-200",
                       currentModeIndex === idx
                         ? "text-background"
-                        : "text-muted-foreground",
+                        : "text-foreground/80",
                       visible ? "opacity-100" : "opacity-0"
                     )}
                     onClick={(e) => {
