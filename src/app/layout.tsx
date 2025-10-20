@@ -67,11 +67,11 @@ export default function RootLayout({
         />
         <AuthProviderOrSessionWrapper>
           <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            // enableSystem
-            enableSystem={true}
-            disableTransitionOnChange
+            // attribute="class"
+            // defaultTheme="system"
+            // // enableSystem
+            // enableSystem={true}
+            // disableTransitionOnChange
           >
             {children}
           </ThemeProvider>
