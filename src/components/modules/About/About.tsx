@@ -55,6 +55,7 @@ const [mounted, setMounted] = useState(false);
               <div className="w-full h-full  bg-gradient-to-br from-blue-500 via-purple-600 to-cyan-500 rounded-2xl flex items-center justify-center relative overflow-hidden">
                 <span className="text-8xl font-black text-white z-10 w-full  rounded-md">
               <Link  href={"/assets/images2/short-removebg-preview.png"} download>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                    <img src={"/assets/images2/short-removebg-preview.png"} alt="Tipusahil image"  className='size-full'/>
               </Link>
                   </span>
@@ -105,7 +106,7 @@ I’m <span className="font-semibold">Muhammad Mostafa Tipu Sahil</span>, a
   What sets me apart is not just my technical knowledge, but my 
   <span className="font-semibold">dedication, consistency, and growth mindset</span>.  
   I spend long focused hours every day coding, learning, and improving.  
-  For me, coding is not just a profession — it's a journey of creativity, 
+  For me, coding is not just a profession — it’s a journey of creativity, 
   problem-solving, and building a better digital future.
 </p>
 

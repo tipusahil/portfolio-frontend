@@ -626,7 +626,7 @@ const NavbarFlow: React.FC<NavbarFlowProps> = ({
           >
             <div className="container py-4 px-3 rounded-xl  bg-background/40 border mx-1">
               <nav className="flex flex-col bg-background/40  space-y-3">
-                {links.map((element, idx) => (
+                {links.map((element) => (
                   <div key={element.text} className="space-y-2 border rounded-lg bg-background/60 hover:bg-background/80">
                     {element.submenu ? (
                       <>

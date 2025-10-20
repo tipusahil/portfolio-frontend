@@ -4,16 +4,16 @@
 import { useEffect, useRef } from 'react'; // React থেকে useEffect এবং useRef হুক আমদানি করা হচ্ছে
 
 // Star ক্লাসের টাইপ ডিফিনেশন: প্রতিটি তারার প্রোপার্টি এবং মেথডের টাইপ নির্ধারণ
-interface Star {
-  x: number; // তারার X-কোঅর্ডিনেট
-  y: number; // তারার Y-কোঅর্ডিনেট
-  radius: number; // তারার ব্যাসার্ধ
-  vx: number; // X-অক্ষে তারার ভেলোসিটি
-  vy: number; // Y-অক্ষে তারার ভেলোসিটি
-  opacity: number; // তারার অপাসিটি (ফোকাসের বাইরে থাকার জন্য)
-  draw: () => void; // তারা আঁকার মেথড
-  update: () => void; // তারার পজিশন এবং অ্যানিমেশন আপডেটের মেথড
-}
+// interface Star {
+//   x: number; // তারার X-কোঅর্ডিনেট
+//   y: number; // তারার Y-কোঅর্ডিনেট
+//   radius: number; // তারার ব্যাসার্ধ
+//   vx: number; // X-অক্ষে তারার ভেলোসিটি
+//   vy: number; // Y-অক্ষে তারার ভেলোসিটি
+//   opacity: number; // তারার অপাসিটি (ফোকাসের বাইরে থাকার জন্য)
+//   draw: () => void; // তারা আঁকার মেথড
+//   update: () => void; // তারার পজিশন এবং অ্যানিমেশন আপডেটের মেথড
+// }
 
 // প্রপসের টাইপ ডিফিনেশন: কম্পোনেন্টে children প্রপ পাস করা হবে
 interface StarryBackgroundProps {

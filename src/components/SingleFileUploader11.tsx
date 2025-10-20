@@ -25,7 +25,7 @@ export default function Component() {
     maxSize,
   })
   const previewUrl = files[0]?.preview || null
-  const fileName = files[0]?.file.name || null
+  // const fileName = files[0]?.file.name || null
 
   return (
     <div className="flex flex-col gap-2">
@@ -46,6 +46,7 @@ export default function Component() {
           />
           {previewUrl ? (
             <div className="absolute inset-0 flex items-center justify-center p-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={previewUrl}
                 alt={files[0]?.file?.name || "Uploaded image"}
