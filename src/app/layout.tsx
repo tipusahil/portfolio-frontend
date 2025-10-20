@@ -1,10 +1,10 @@
+import { BubbleBackground } from "@/components/animate-ui/components/backgrounds/bubble_new_for_IOS_friendly_version";
 import { ThemeProvider } from "@/components/shared/navbar/theme-provider";
 import AuthProviderOrSessionWrapper from "@/providers/AuthProviderOrSessionWrapper";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import { BubbleBackground } from "@/components/animate-ui/components/backgrounds/bubble_new_for_IOS_friendly_version";
 // import { BubbleBackground } from "@/components/animate-ui/components/backgrounds/bubble";
 const geistSans = Geist({
   variable: "--font-geist-sans",

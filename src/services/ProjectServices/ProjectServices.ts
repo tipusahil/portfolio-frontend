@@ -1,5 +1,4 @@
 import { apiRequest } from "@/utils/api";
-import { revalidateTag } from "next/cache";
 
 // Single blog fetch
 export const getProjectById = (

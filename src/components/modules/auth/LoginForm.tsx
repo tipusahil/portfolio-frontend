@@ -81,13 +81,27 @@ toast.success("Owner logged successfully", { id: toastId });
 window.location.href = "/dashboard";
 
 
-    } catch (err:any) {
-        toast.dismiss();
-        toast.error(err.message || "something went wrong!",{ duration:2000});
-      toast.error(err.message || "User Login Failed!",{ duration:5000});
-      // console.log(error.message || error || "something went wrong!")
-      console.log(err.message || "something went wrong!");
-    }
+    } catch (error: unknown) {
+  toast.dismiss();
+
+  // Default message
+  let message = "Something went wrong!";
+
+  // যদি Error object হয়, তাহলে তার message ব্যবহার করো
+  if (error instanceof Error) {
+    message = error.message;
+  }
+
+  // Toast notifications
+  toast.error(message, { duration: 4000 });
+  toast.error(message === "Something went wrong!"
+    ? "User Login Failed!"
+    : message, { duration: 5000 });
+
+  // Console log for debugging
+  console.error(message);
+}
+
   };
 
   const handleSocialLogin = (provider: "google" | "github") => {

@@ -101,9 +101,16 @@ const CreateProjectForm = () => {
       form.reset();
       setImage(null);
       router.push("/projects");
-    } catch (error: any) {
-      toast.error(error?.message || "Something went wrong ❌");
-    }
+    } catch (error: unknown) {
+  let message = "Something went wrong ❌";
+
+  if (error instanceof Error) {
+    message = error.message;
+  }
+
+  toast.error(message);
+}
+
   };
 
   return (

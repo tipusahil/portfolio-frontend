@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { DropdownMenuDialog } from "@/components/ui/DropdownMenuDialog";
-import { SpotlightCard } from "@/components/ui/spotlightcard";
 import { IBlog } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 // import { GlowingEffect } from "@/components/ui/glowing-effect-2-default-color";
 import { GlowingEffect } from "@/components/ui/glowing-effect-2-rich-color";
 

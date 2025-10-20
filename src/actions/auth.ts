@@ -1,5 +1,5 @@
 "use server";
-export const UserRegisterServerActionFunc = async (values: any) => {
+export const UserRegisterServerActionFunc = async (values: unknown) => {
   console.log(values);
   return {
     message: "only owner can register",

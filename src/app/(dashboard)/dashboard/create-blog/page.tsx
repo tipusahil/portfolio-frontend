@@ -1,6 +1,5 @@
 // import CreateBlogForm from '@/components/modules/Blogs/CreateBlogForm';
 
-import CreateBlogForm from "@/components/modules/Blogs/CreateBlogForm";
 import CreateBlogForm_Advance from "@/components/modules/Blogs/CreateBlogForm_advance_normal_form_tag_useKore";
 
 const CreateBlogPage = () => {

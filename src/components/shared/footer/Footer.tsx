@@ -72,7 +72,7 @@ const Footer1 = ({
       name: "Linkedin",
     },
   ],
-  copyrightText = `© ${new Date().getFullYear()} Tipusahil All rights reserved • Made with ❤️`,
+  // copyrightText = `© ${new Date().getFullYear()} Tipusahil All rights reserved • Made with ❤️`,
 }: Footer1Props) => {
   return (
     <footer className="bg-background/60 px-2 py-12 text-secondary-foreground">

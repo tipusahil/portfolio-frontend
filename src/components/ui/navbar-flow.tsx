@@ -1,13 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import {
-  Menu as List,
-  X as Close,
   ChevronDown as ArrowDown,
   ChevronUp as ArrowUp,
+  X as Close,
+  Menu as List,
 } from "lucide-react";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 interface NavLink {
   text: string;

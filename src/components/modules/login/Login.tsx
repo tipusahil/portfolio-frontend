@@ -1,4 +1,3 @@
-import manhiking from "@/assets/images/man-hiking.jpg";
 import Lugo from "@/components/shared/navbar/Lugo";
 import Link from "next/link";
 

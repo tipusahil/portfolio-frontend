@@ -151,7 +151,6 @@ const handleSubmit = async (formData: FormData) => {
 *---------------------------------------------------------------
 */
 
-
 import { createBlogServerActionFunc } from "@/actions/create";
 import SingleImageUploader from "@/components/SingleFileUploader";
 import { useRouter } from "next/navigation";
@@ -174,23 +173,37 @@ export default function CreateBlogForm_Advance() {
       const result = await createBlogServerActionFunc(formData);
 
       toast.dismiss(toastId);
-console.log("result---broh---:", result);
+      console.log("result---broh---:", result);
       if (result?.success) {
-
-        toast.success(result.message||"Blog created successfully!", { id:toastId,duration: 3000 });
+        toast.success(result.message || "Blog created successfully!", {
+          id: toastId,
+          duration: 3000,
+        });
         router.push("/blogs");
       } else {
-        toast.error("Failed to create blog!", { id:toastId,duration: 3000 });
-       
+        toast.error("Failed to create blog!", { id: toastId, duration: 3000 });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
       toast.dismiss();
-      if(error.message==="Access token missing! Please login fast."){
-        toast.error(error.message || "Access token missing! Please login fast.",{duration: 3000 });
-        router.push("/login");
+
+      // Step 1: error instanceof Error দিয়ে চেক করো
+      if (error instanceof Error) {
+        if (error.message === "Access token missing! Please login fast.") {
+          toast.error(
+            error.message || "Access token missing! Please login fast.",
+            { duration: 3000 }
+          );
+          router.push("/login");
+        } else {
+          toast.error(error.message || "Something went wrong!", {
+            duration: 3000,
+          });
+        }
+      } else {
+        // Step 2: যদি Error না হয়, fallback message দেখাও
+        toast.error("Something went wrong!", { duration: 3000 });
       }
-      toast.error(error.message || "Something went wrong!", {duration: 3000 });
     } finally {
       setIsSubmitting(false);
     }
@@ -227,14 +240,18 @@ console.log("result---broh---:", result);
             if (file) {
               const dt = new DataTransfer();
               dt.items.add(file as File);
-              const input = document.querySelector<HTMLInputElement>(
-                "#thumbnail-file"
-              );
+              const input =
+                document.querySelector<HTMLInputElement>("#thumbnail-file");
               if (input) input.files = dt.files;
             }
           }}
         />
-        <input type="file" id="thumbnail-file" name="thumbnail" className="hidden" />
+        <input
+          type="file"
+          id="thumbnail-file"
+          name="thumbnail"
+          className="hidden"
+        />
 
         <input
           type="text"
@@ -274,9 +291,7 @@ console.log("result---broh---:", result);
           type="submit"
           disabled={isSubmitting}
           className={`w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium py-2 rounded-md transition ${
-            isSubmitting
-              ? "opacity-50 cursor-not-allowed"
-              : "hover:bg-blue-700"
+            isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
           }`}
         >
           {isSubmitting ? "Submitting..." : "Submit"}

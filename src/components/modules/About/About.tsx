@@ -77,7 +77,7 @@ const [mounted, setMounted] = useState(false);
             </h3>
             
 <p className="text-foreground/90 text-lg leading-relaxed">
-  I'm <span className="font-semibold">Muhammad Mostafa Tipu Sahil</span>, a 
+I’m <span className="font-semibold">Muhammad Mostafa Tipu Sahil</span>, a 
   passionate <span className="font-semibold">Full-Stack Web Developer</span> and 
   tech enthusiast who believes in the power of code to create meaningful impact.  
   My journey began with endless curiosity about how the web works, and today 

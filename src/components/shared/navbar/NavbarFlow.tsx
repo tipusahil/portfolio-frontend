@@ -1,9 +1,8 @@
 import NavbarFlow, {
-  FeatureItem,
-  HoverLink,
+  HoverLink
 } from "@/components/ui/navbar-flow";
-import ThemeSwitchIcon from "./ThemeSwitchIcon";
 import Lugo from "./Lugo";
+import ThemeSwitchIcon from "./ThemeSwitchIcon";
 
 const NavbarFlow2 = () => {
   return (

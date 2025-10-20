@@ -1,10 +1,8 @@
 "use server";
+import { authOptions } from "@/helpers/authOptions";
+import { getServerSession } from "next-auth";
 import { revalidateTag } from "next/cache";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/helpers/authOptions";
 // ইন্টারফেস ডিফাইন করা
 interface IModifiedData {
   title: string;
@@ -203,13 +201,18 @@ const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blogs`, {
       console.error("Blog creation failed:", result.message);
       throw new Error(result.message || "Blog creation failed");
     }
-  } catch (error: any) {
-       if (isRedirectError(error)) {
-      throw error; // redirect হলে normal flow
-    }
-    
-    console.error("Error in createBlogServerActionFunc:", error.message);
- 
-    throw new Error(error?.message || "Something went wrong");
+  }catch (error: unknown) {
+  if (isRedirectError(error)) {
+    throw error; // redirect হলে normal flow
   }
+
+  if (error instanceof Error) {
+    console.error("Error in createBlogServerActionFunc:", error.message);
+    throw new Error(error.message);
+  } else {
+    console.error("Unknown error in createBlogServerActionFunc:", error);
+    throw new Error("Something went wrong");
+  }
+}
+
 };

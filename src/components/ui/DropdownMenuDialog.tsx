@@ -39,12 +39,12 @@ import {
 } from "@/components/ui/form";
 import { FileMetadata } from "@/hooks/use-file-upload";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 import SingleImageUploader from "../SingleFileUploader";
 import { RadioGroup, RadioGroupItem } from "./radio-group";
-import { useSession } from "next-auth/react";
 
 // Update schema (partial)
 const formSchema = z.object({
@@ -195,12 +195,13 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
         duration: 5000,
       });
       setshowUpdateDialogModalModal(false); // close modal after success
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error updating blog:", error);
-      // toast.dismiss(toastId);
-      toast.error(error?.message || "Something went wrong ❌", {
-        duration: 5000,
-      });
+
+      const message =
+        error instanceof Error ? error.message : "Something went wrong ❌";
+
+      toast.error(message, { duration: 5000 });
     }
   };
 
@@ -209,9 +210,8 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
   //   ----------start---delete blog -------
   const handleBlogDelete = async (blog_id: number | string) => {
     try {
-
       // -------------session theke token -------------
-          if (status === "loading") {
+      if (status === "loading") {
         toast.error("Session is loading, please wait...");
         return;
       }
@@ -223,14 +223,12 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
         return;
       }
 
-
       const accessToken = session.user.accessToken;
       if (!accessToken) {
         toast.error("Access token missing! Please login again.");
         setshowDeleteDialogModalModal(false);
         return;
       }
-
 
       // -------------session theke token -------------
       const toastId = toast.loading("Blog deleting...");
@@ -240,7 +238,7 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
         {
           method: "DELETE",
           headers: {
-   Authorization: `Bearer ${accessToken}`, // ✅ সেশন থেকে টোকেন
+            Authorization: `Bearer ${accessToken}`, // ✅ সেশন থেকে টোকেন
           },
           next: {
             tags: ["BLOGS"],
@@ -271,12 +269,13 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
       });
 
       setshowDeleteDialogModalModal(false); // close modal after success
-    } catch (error: any) {
-      console.error("Error delete blog:", error);
-      // toast.dismiss(toastId);
-      toast.error(error?.message || "Something went wrong ❌", {
-        duration: 5000,
-      });
+    } catch (error: unknown) {
+      console.error("Error deleting blog:", error);
+
+      const message =
+        error instanceof Error ? error.message : "Something went wrong ❌";
+
+      toast.error(message, { duration: 5000 });
     } finally {
       setIsDelete(false); // ✅ স্পিনার বন্ধ করো
     }

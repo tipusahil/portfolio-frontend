@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useRef, useState, memo } from "react";
-import { motion } from "framer-motion";
-import { twMerge } from "tailwind-merge";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import React, { memo, useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 export const TextRevealCard = ({
   text,
@@ -16,7 +16,8 @@ export const TextRevealCard = ({
   className?: string;
 }) => {
   const [widthPercentage, setWidthPercentage] = useState(0);
-  const cardRef = useRef<HTMLDivElement | any>(null);
+  // const cardRef = useRef<HTMLDivElement | any>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
   const [left, setLeft] = useState(0);
   const [localWidth, setLocalWidth] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
@@ -40,15 +41,16 @@ useEffect(() => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  function mouseMoveHandler(event: any) {
-    event.preventDefault();
+function mouseMoveHandler(event: React.MouseEvent<HTMLDivElement>) {
+  event.preventDefault();
 
-    const { clientX } = event;
-    if (cardRef.current) {
-      const relativeX = clientX - left;
-      setWidthPercentage((relativeX / localWidth) * 100);
-    }
+  const { clientX } = event;
+  if (cardRef.current) {
+    const relativeX = clientX - left;
+    setWidthPercentage((relativeX / localWidth) * 100);
   }
+}
+
 
   function mouseLeaveHandler() {
     setIsMouseOver(false);

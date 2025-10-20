@@ -1,12 +1,12 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ChevronDownIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import React, { useEffect, useState } from "react";
-import DownloadButton from "./DownloadButton";
-import { Button } from "@/components/ui/button";
-import { TextReveal } from "../Home/TextReveal";
 import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { TextReveal } from "../Home/TextReveal";
+import DownloadButton from "./DownloadButton";
 
 const Hero: React.FC = () => {
   const { theme } = useTheme();
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
             }`}
             style={{ fontFamily: "Poppins, sans-serif", marginTop: "3rem" }}
           >
-            <span className="text-foreground">Hi, I'm</span>
+            <span className="text-foreground">Hi, I’m </span>
             <span
               className={`block mt-4 ${
                 theme === "dark"
