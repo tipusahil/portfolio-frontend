@@ -26,6 +26,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
     "@types/multer": "^2.0.0",
+    "@types/three": "^0.180.0",
     "add": "^2.0.6",
     "autoprefixer": "^10.4.21",
     "axios": "^1.12.2",
@@ -53,6 +54,7 @@
     "react-redux": "^9.2.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.180.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {

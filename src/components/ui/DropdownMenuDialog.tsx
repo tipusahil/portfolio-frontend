@@ -280,7 +280,7 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
     <>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" aria-label="Open menu" size="sm">
+          <Button variant="outline" aria-label="Open menu" className="w-3 border-[0.8] h-4" >
             <MoreHorizontalIcon />
           </Button>
         </DropdownMenuTrigger>

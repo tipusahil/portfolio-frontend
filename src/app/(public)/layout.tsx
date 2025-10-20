@@ -1,4 +1,5 @@
 import { BubbleBackground } from "@/components/animate-ui/components/backgrounds/bubble";
+import ScrollBaseVelocityText from "@/components/modules/skills/ScrollBaseVelocityText";
 import { Footer1 } from "@/components/shared/footer/Footer";
 import NavbarFlow2 from "@/components/shared/navbar/NavbarFlow";
 
@@ -13,6 +14,7 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
         <NavbarFlow2  />
       </div>
       <main className="min-h-dvh">{children}</main>
+      <ScrollBaseVelocityText/>
       <Footer1 />
     </div>
   );

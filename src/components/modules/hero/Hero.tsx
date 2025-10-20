@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { WordRotate } from "@/components/ui/word-rotate";
 import { motion } from "framer-motion";
 import { ChevronDownIcon } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -61,7 +62,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="break-words text-center text-base sm:text-lg md:text-xl lg:text-3xl font-semibold max-w-full sm:max-w-3xl lg:max-w-6xl mx-auto overflow-wrap-break-word"
           >
-            Full-Stack Developer | Building Modern Web Solutions
+       <WordRotate duration={2500} words={["Full-Stack Developer", "Mern-Stack Developer","Web Developer"]} /> | Building Modern Web Solutions
           </motion.p>
 
           <div className="flex flex-col items-center justify-center">
