@@ -66,13 +66,7 @@ const formSchema = z.object({
 
   isFeatured: z.boolean().optional(),
   tags: z.string().optional(),
-  view: z
-    .preprocess((val: unknown) => {
-      if (val === "" || val === undefined) return undefined;
-      const num = Number(val);
-      return isNaN(num) ? undefined : num;
-    }, z.number().optional())
-    .optional(),
+view: z.number().optional(), // পরিবর্তন: z.preprocess বাদ দিয়ে সরাসরি z.number().optional() ব্যবহার করা হয়েছে
 });
 
 export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
@@ -286,7 +280,7 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
     <>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" aria-label="Open menu" size="icon-sm">
+          <Button variant="outline" aria-label="Open menu" size="sm">
             <MoreHorizontalIcon />
           </Button>
         </DropdownMenuTrigger>
@@ -443,6 +437,7 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
                 {/* ------end---tags field */}
 
                 {/* ---start view field */}
+{/* পরিবর্তন: view ফিল্ডে ইনপুট হ্যান্ডলিংয়ে খালি ইনপুটকে undefined করা হচ্ছে */}
                 <FormField
                   control={form.control}
                   name="view"
@@ -454,9 +449,15 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
                           type="number"
                           placeholder="Enter number of views"
                           value={field.value ?? ""}
-                          onChange={(e) =>
-                            field.onChange(Number(e.target.value))
-                          }
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            // খালি ইনপুট বা অবৈধ সংখ্যা হলে undefined পাঠানো হচ্ছে
+                            field.onChange(
+                              value === "" || isNaN(Number(value))
+                                ? undefined
+                                : Number(value)
+                            );
+                          }}
                         />
                       </FormControl>
                       <FormDescription className="text-foreground/80">
@@ -466,7 +467,6 @@ export function DropdownMenuDialog({ blog_id }: { blog_id: string | number }) {
                     </FormItem>
                   )}
                 />
-
                 {/* ---end view field */}
 
                 <FormField
