@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion , type Transition} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-const transition = {
+const transition: Transition = {
   type: "spring",
   mass: 0.5,
   damping: 11.5,
@@ -13,6 +13,7 @@ const transition = {
   restDelta: 0.001,
   restSpeed: 0.001,
 };
+
 
 export const MenuItem = ({
   setActive,

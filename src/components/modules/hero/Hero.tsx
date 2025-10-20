@@ -17,9 +17,9 @@ const Hero: React.FC = () => {
 
   if (!mounted) return null; // theme না লোড হওয়া পর্যন্ত রেন্ডার বন্ধ
 
-  const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToProjects = () => {
+  //   document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   return (
     <section
