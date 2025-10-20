@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const transition: Transition = {
-  type: "spring",
+  type: "spring" as const, // 👈 এখানে as const দিয়েই literal বানানো হচ্ছে
   mass: 0.5,
   damping: 11.5,
   stiffness: 100,
