@@ -177,7 +177,7 @@ const HomePage = async () => {
           ✨Featured Posts✨
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-2 max-w-6xl mx-auto my-5">
-          {blogs?.slice(0, 3).map((blog: IBlog) => (
+          {blogs?.slice(0, 6).map((blog: IBlog) => (
             // blogs?.data?.map((blog : IBlog) => (
             <BlogCard key={blog?.id} blog={blog} />
           ))}
@@ -198,7 +198,7 @@ const HomePage = async () => {
           ✨Projects Showcase✨
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-2 max-w-6xl mx-auto my-5">
-          {projects?.slice(0, 3).map((project: IProject) => (
+          {projects?.slice(0, 6).map((project: IProject) => (
             // blogs?.data?.map((project : IBlog) => (
             <ProjectCard key={project?.id} project={project} />
           ))}
