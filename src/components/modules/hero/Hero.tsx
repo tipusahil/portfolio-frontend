@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { TextReveal } from "../Home/TextReveal";
+import ScrollBaseVelocityText from "../skills/ScrollBaseVelocityText";
 import DownloadButton from "./DownloadButton";
 
 const Hero: React.FC = () => {
@@ -34,12 +35,12 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
-           <motion.h1
+          <motion.h1
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className={`text-4xl sm:text-5xl lg:text-7xl  xl:text-8xl font-black leading-tight ${
-            // className={`text-5xl sm:text-6xl lg:text-8xl font-black leading-tight ${
+              // className={`text-5xl sm:text-6xl lg:text-8xl font-black leading-tight ${
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
             style={{ fontFamily: "Poppins, sans-serif", marginTop: "3rem" }}
@@ -62,7 +63,15 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="break-words text-center text-base sm:text-lg md:text-xl lg:text-3xl font-semibold max-w-full sm:max-w-3xl lg:max-w-6xl mx-auto overflow-wrap-break-word"
           >
-       <WordRotate duration={2500} words={["Full-Stack Developer", "Mern-Stack Developer","Web Developer"]} /> | Building Modern Web Solutions
+            <WordRotate
+              duration={2500}
+              words={[
+                "Full-Stack Developer",
+                "Mern-Stack Developer",
+                "Web Developer",
+              ]}
+            />{" "}
+            | Building Modern Web Solutions
           </motion.p>
 
           <div className="flex flex-col items-center justify-center">
@@ -79,14 +88,20 @@ const Hero: React.FC = () => {
             cutting-edge technologies. Specializing in React, Node.js, and
             modern web development with a focus on premium user experiences.
           </motion.p>
-
+<div>
+  <ScrollBaseVelocityText />
+</div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             className="pt-8 sm:pt-12"
           >
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+           
+              
+           
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 ">
               <Button
                 onClick={() => router.push("/projects")}
                 className="btn-premium text-primary shadow-glow w-full sm:w-auto"
