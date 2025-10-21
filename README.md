@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🖥️ **Frontend README.md**
 
-## Getting Started
+```md
+# 🌐 Next-Level Portfolio — Frontend
 
-First, run the development server:
+A modern, dynamic, and interactive portfolio website built with **Next.js**, **TypeScript**, and **TailwindCSS**.  
+This project reflects my journey as a **Full-Stack Developer**, featuring smooth animations, responsive design, and secure authentication for admin-only actions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Features
+
+### 🎨 User Interface
+- **Modern UI/UX** with smooth animations using **Framer Motion**.
+- **Dark/Light/System Theme Toggle** using `next-themes` (auto-detects system mode).
+- Fully **responsive design** for all screen sizes.
+- Elegant **navbar with section routing** (`Home`, `About`, `Skills`, `Projects`, `Blogs`, `Services`, `Dashboard`, `Login`).
+- **Chevron navigation system** for smooth scrolling between sections.
+- **Download CV** button — allows visitors to instantly download the owner’s CV.
+- **Globe animation** displaying location markers of six countries, rotating infinitely in 360°.
+- **Footer with Quick Links** for fast navigation.
+
+---
+
+## 🔐 Authentication & Authorization
+- Integrated with **Next-Auth**.
+- **Owner-only login system** — only the site owner can:
+  - Access the Dashboard
+  - Create, Update, Delete projects
+  - Post, Edit, Delete blogs
+- Visitors can **read blogs and view projects** but cannot modify them.
+- **Google login** available for the owner.
+- **GitHub login button** integrated but currently disabled (for future use).
+- **Logout button** in Dashboard to end the session securely.
+
+---
+
+## 🧭 Navigation Flow
+| Action | Result |
+|--------|---------|
+| Click on bottom chevron | Scroll to **About** section |
+| Click on “Explore My Work” | Scroll to **Projects** section |
+| Click on top-right chevron | Scroll back to **Home** |
+| Theme toggle | Instantly switch between Dark/Light/System modes |
+
+---
+
+## 🧩 Tech Stack
+### ⚛️ Frontend Technologies
+- **Next.js (TypeScript)**
+- **Tailwind CSS**
+- **Framer Motion**
+- **Shadcn/UI**
+- **Lucide React Icons**
+- **Next-Themes**
+- **Next-Auth**
+- **React Hook Form**
+- **Zod Validation**
+- **Axios**
+- **React Toast Notifications**
+
+---
+
+## 📁 Folder Structure
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+frontend/
+├── components/
+│   ├── shared/
+│   ├── ui/
+│   ├── home/
+│   ├── skills/
+│   ├── projects/
+│   ├── blogs/
+│   └── dashboard/
+├── pages/
+│   ├── api/
+│   ├── dashboard/
+│   ├── login/
+│   └── index.tsx
+├── styles/
+├── public/
+├── hooks/
+└── utils/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+````
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Setup & Run
+```bash
+# Clone the repository
+git clone https://github.com/tipusahil/next-level-portfolio.git
 
-To learn more about Next.js, take a look at the following resources:
+# Go to frontend folder
+cd frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Install dependencies
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Run development server
+npm run dev
+````
 
-## Deploy on Vercel
+Then open:
+👉 [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌗 Environment Variables
+
+```
+NEXT_PUBLIC_API_URL=your_backend_api_url
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret_key
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GITHUB_ID=your_github_id
+GITHUB_SECRET=your_github_secret
+```
+
+---
+
+## 🧠 Highlights
+
+* Built with **Performance & Aesthetics** in mind.
+* Seamless user experience with **dynamic routing & smooth transitions**.
+* Strong focus on **access control** and **security**.
+* Professional-grade **theme system**.
+* Scalable & easily extendable structure.
+
+---
+
+## 🧑‍💻 Author
+
+**Tipu Sahil**
+📧 Email: [tipusahil.ctg@gmail.com](mailto:tipusahil.ctg@gmail.com)
+🔗 [Portfolio](https://tipusahil.vercel.app)
+🐙 [GitHub](https://github.com/tipusahil)
+💼 [LinkedIn](https://www.linkedin.com/in/tipusahil-01aa41316/)
+
+````
+
