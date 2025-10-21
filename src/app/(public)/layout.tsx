@@ -1,7 +1,6 @@
 import { BubbleBackground } from "@/components/animate-ui/components/backgrounds/bubble";
 import { Footer1 } from "@/components/shared/footer/Footer";
 import NavbarFlow2 from "@/components/shared/navbar/NavbarFlow";
-import Scroll_to_home from "@/components/shared/Scroll_to_home";
 
 const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -13,7 +12,7 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
         <NavbarFlow2 />
       </div>
       <main className="min-h-dvh">{children}</main>
-      <Scroll_to_home id="home" />
+    
       <Footer1 />
     </div>
   );

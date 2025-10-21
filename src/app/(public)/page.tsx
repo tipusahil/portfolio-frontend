@@ -3,6 +3,7 @@ import BlogCard from "@/components/modules/Blogs/BlogCard";
 import GlobeCities from "@/components/modules/Home/Globe";
 import { ProjectCard } from "@/components/modules/Projects/ProjectCard";
 import Hero from "@/components/modules/hero/Hero";
+import Scroll_to_home from "@/components/shared/Scroll_to_home";
 import { Button } from "@/components/ui/button";
 import { getAllProjects } from "@/services/ProjectServices/ProjectServices";
 
@@ -212,6 +213,8 @@ const HomePage = async () => {
           </Link>
         </div>
       </div>
+
+        <Scroll_to_home id="home" />
     </div>
   );
 };
