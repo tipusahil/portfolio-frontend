@@ -40,7 +40,7 @@ const NavbarFlow2 = () => {
           { text: "Services", url: "/services" },
           { text: "Dashboard", url: "/dashboard" },
           // { text: "Experience", url: "/experience" },
-          { text: "Login", url: "/login" },
+          // { text: "Login", url: "/login" },
 
           // { text: "Testimonials", url: "/testimonials" },
         ]}
