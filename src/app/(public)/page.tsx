@@ -11,7 +11,7 @@ const HomePage =async () => {
 const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blogs`, {
   next : {
     // revalidate: 30//ISR kora hoise homepage tai// caile (no-store)SSR use kora jeto,but etar ketre loading spinner dekate hoi, but homepage e loading Spinner dekanor caite ISR koratai best-1
- tags : ["BLOG"],//ei ISR tai ortat tag use kora tai best practise, ete server e pressure porbena.
+ tags : ["BLOGS"],//ei ISR tai ortat tag use kora tai best practise, ete server e pressure porbena.
     
     /**
      * --------------------------------------------------------
