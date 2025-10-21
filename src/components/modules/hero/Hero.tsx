@@ -1,10 +1,9 @@
 "use client";
+import Scroll_into_view from "@/components/shared/Scroll_into_view";
 import { Button } from "@/components/ui/button";
 import { WordRotate } from "@/components/ui/word-rotate";
 import { motion } from "framer-motion";
-import { ChevronDownIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { TextReveal } from "../Home/TextReveal";
 import ScrollBaseVelocityText from "../skills/ScrollBaseVelocityText";
@@ -13,7 +12,6 @@ import DownloadButton from "./DownloadButton";
 const Hero: React.FC = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const router = useRouter();
 
   useEffect(() => setMounted(true), []);
 
@@ -22,11 +20,16 @@ const Hero: React.FC = () => {
   // const scrollToProjects = () => {
   //   document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   // };
+// ---------------------------------------this page all work-----
+  const scrollToProjects = (id:string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+// ---------------------------------------this page all work-----
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-8 py-6"
+      className="min-h-screen flex items-center justify-center  px-4 sm:px-6 lg:px-8 pt-4 py-6"
     >
       <div className="max-w-7xl mx-auto text-center w-full">
         <motion.div
@@ -103,10 +106,10 @@ const Hero: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 ">
               <Button
-                onClick={() => router.push("/projects")}
+                onClick={()=> scrollToProjects("projects")}
                 className="btn-premium text-primary shadow-glow w-full sm:w-auto"
               >
-                Explore My Work
+                ✨Explore My Work
               </Button>
 
               <DownloadButton className="btn-premium text-primary shadow-glow w-full sm:w-auto" />
@@ -128,14 +131,15 @@ const Hero: React.FC = () => {
               }}
               className="flex justify-center"
             >
-              <ChevronDownIcon
-                className={`h-8 w-8 sm:h-10 sm:w-10 rounded-2xl border-[0.8] cursor-pointer transition-all duration-300 hover:scale-110 ${
+              {/* <ChevronDownIcon
+                className={`h-8 w-8 text-muted-foreground/50 hover:text-foreground sm:h-10 sm:w-10 rounded-2xl border-[0.8] cursor-pointer transition-all duration-300 hover:scale-110 ${
                   theme === "dark"
-                    ? "text-gray-400 hover:text-white glow-premium"
-                    : "text-gray-500 hover:text-gray-900 glow-premium-light"
+                    ? " glow-premium"
+                    : " glow-premium-light"
                 }`}
-                onClick={() => router.push("/about")}
-              />
+                onClick={() =>scrollToProjects("about")}
+              /> */}
+              <Scroll_into_view id="about"/>
             </motion.div>
           </motion.div>
         </motion.div>

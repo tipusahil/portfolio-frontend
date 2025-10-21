@@ -4,10 +4,10 @@ import {
   Instagram,
   Linkedin,
   TwitterIcon,
-  type LucideIcon
+  type LucideIcon,
 } from "lucide-react";
-import Link from "next/link";
 
+import Link from "next/link";
 interface LinkItem {
   href: string;
   label: string;
@@ -72,11 +72,11 @@ const Footer1 = ({
       name: "Linkedin",
     },
   ],
-  // copyrightText = `© ${new Date().getFullYear()} Tipusahil All rights reserved • Made with ❤️`,
-}: Footer1Props) => {
+}: // copyrightText = `© ${new Date().getFullYear()} Tipusahil All rights reserved • Made with ❤️`,
+Footer1Props) => {
   return (
-    <footer className="bg-background/60 px-2 py-12 text-secondary-foreground">
-      <div className="container mx-auto">
+    <footer className="bg-background/60  px-2 py-12 text-secondary-foreground">
+      <div className="container mx-auto ">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">{aboutUsTitle}</h3>

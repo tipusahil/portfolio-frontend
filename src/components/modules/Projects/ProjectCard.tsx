@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { PinContainer } from "@/components/ui/3d-pin";
 import { IProject } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 interface ProjectCardProps {
   project: IProject;
