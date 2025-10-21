@@ -137,7 +137,9 @@ GITHUB_SECRET=your_github_secret
 📧 Email: [tipusahil.ctg@gmail.com](mailto:tipusahil.ctg@gmail.com)
 🔗 [Portfolio](https://tipusahil.vercel.app)
 🐙 [GitHub](https://github.com/tipusahil)
-💼 [LinkedIn](https://www.linkedin.com/in/tipusahil-01aa41316/)
+💼 [LinkedIn](https://www.linkedin.com/in/tipusahil)
+💼 [X(Twitter)](https://x.com/tipusahil_X)
+💼 [Facebook](https://www.facebook.com/tipusahilx)
 
 ````
 
