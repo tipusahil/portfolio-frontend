@@ -1,4 +1,3 @@
-## 🖥️ **Frontend README.md**
 
 ```md
 # 🌐 Next-Level Portfolio — Frontend
@@ -25,13 +24,39 @@ This project reflects my journey as a **Full-Stack Developer**, featuring smooth
 ## 🔐 Authentication & Authorization
 - Integrated with **Next-Auth**.
 - **Owner-only login system** — only the site owner can:
-  - Access the Dashboard
-  - Create, Update, Delete projects
-  - Post, Edit, Delete blogs
+  - Access the **Dashboard**
+  - Create, Update, and Delete **projects**
+  - Create, Update, and Delete **blogs**
 - Visitors can **read blogs and view projects** but cannot modify them.
 - **Google login** available for the owner.
 - **GitHub login button** integrated but currently disabled (for future use).
 - **Logout button** in Dashboard to end the session securely.
+
+---
+
+## 🧭 Dashboard Features (Admin Only)
+> Accessible only after login (for the site owner).
+
+### 🧩 Blog Management
+- Admin can **create new blogs** directly from the Dashboard.
+- Each blog card has a **3-dot menu icon** (...) at the top-right corner.
+- Clicking the menu opens two options:
+  - **📝 Update** — Opens a modal with a pre-filled form where the admin can edit the title, content, or image.  
+    Upon submission, the data updates instantly and the **UI reflects the new changes**.
+  - **🗑️ Delete** — Opens a confirmation modal.  
+    After confirming, the blog is permanently deleted and removed from the UI in real-time.
+
+### 🧱 Project Management
+- Admin can **create new projects** from the Dashboard (title, description, image, GitHub link, live link).
+- All created projects are automatically displayed in the **Projects** section.
+- Future update/delete options will also follow the same modal-based system as blogs.
+
+### 🚪 Logout System
+- The Dashboard includes a dedicated **Logout button**.
+- Clicking it will:
+  - **Sign out** the current user session.
+  - Automatically **redirect** to the `/login` route.
+  - Securely clear authentication tokens from session.
 
 ---
 
@@ -42,6 +67,8 @@ This project reflects my journey as a **Full-Stack Developer**, featuring smooth
 | Click on “Explore My Work” | Scroll to **Projects** section |
 | Click on top-right chevron | Scroll back to **Home** |
 | Theme toggle | Instantly switch between Dark/Light/System modes |
+| Click on “Dashboard” (after login) | Redirect to **Admin Dashboard** |
+| Click on “Logout” in Dashboard | End session & redirect to **Login** |
 
 ---
 
@@ -128,6 +155,9 @@ GITHUB_SECRET=your_github_secret
 * Strong focus on **access control** and **security**.
 * Professional-grade **theme system**.
 * Scalable & easily extendable structure.
+* Modal-based **CRUD operations** for blogs and projects.
+* Smooth, real-time **UI updates** after create/update/delete actions.
+* Fully protected **Admin Dashboard** ensuring safe access control.
 
 ---
 
@@ -138,8 +168,9 @@ GITHUB_SECRET=your_github_secret
 🔗 [Portfolio](https://tipusahil.vercel.app)
 🐙 [GitHub](https://github.com/tipusahil)
 💼 [LinkedIn](https://www.linkedin.com/in/tipusahil)
-💼 [X(Twitter)](https://x.com/tipusahil_X)
-💼 [Facebook](https://www.facebook.com/tipusahilx)
+💬 [X (Twitter)](https://x.com/tipusahil_X)
+📘 [Facebook](https://www.facebook.com/tipusahilx)
 
-````
+```
+
 
