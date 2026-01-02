@@ -160,6 +160,7 @@ const HomePage = async () => {
   const scrollToAbout = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+  console.log({scrollToAbout,project_res});
   // ---------------------------------------this page all work-----
 
   return (

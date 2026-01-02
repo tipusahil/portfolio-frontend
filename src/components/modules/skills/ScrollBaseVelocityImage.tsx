@@ -1,4 +1,5 @@
 import { ScrollVelocityContainer, ScrollVelocityRow } from "@/components/ui/scroll-based-velocity"
+import Image from "next/image"
 
 const IMAGES_ROW_A = [
   "https://images.unsplash.com/photo-1749738456487-2af715ab65ea?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -16,7 +17,7 @@ export function ScrollBaseVelocityImage() {
       <ScrollVelocityContainer className="w-full">
         <ScrollVelocityRow baseVelocity={6} direction={1} className="py-4">
           {IMAGES_ROW_A.map((src, idx) => (
-            <img
+            <Image
               key={idx}
               src={`${src}&ixlib=rb-4.0.3`}
               alt="Unsplash sample"
@@ -30,7 +31,7 @@ export function ScrollBaseVelocityImage() {
         </ScrollVelocityRow>
         <ScrollVelocityRow baseVelocity={6} direction={-1} className="py-4">
           {IMAGES_ROW_B.map((src, idx) => (
-            <img
+            <Image
               key={idx}
               src={`${src}&ixlib=rb-4.0.3`}
               alt="Unsplash sample"
