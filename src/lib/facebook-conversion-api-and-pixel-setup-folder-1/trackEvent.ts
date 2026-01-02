@@ -21,7 +21,7 @@ export const trackMetaEvent = ({
   }
 
   // 🔴 CAPI (Server-side via API route)
-  fetch("/api/meta/capi", {
+  fetch("/api/meta/capi", {// src/app/api/(meta/capi/route.ts) file ta:
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
