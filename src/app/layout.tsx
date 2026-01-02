@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import { FacebookPixelProvider } from "../../FacebookPixelProvider-folder-2/components/FacebookPixelProvider";
+
 // import { BubbleBackground } from "@/components/animate-ui/components/backgrounds/bubble";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,6 +67,13 @@ export default function RootLayout({
             },
           }}
         />
+
+
+{/* --------facebook meta--------- */}
+     {/* Facebook Pixel Provider */}
+        <FacebookPixelProvider />
+{/* --------facebook meta--------- */}
+
         <AuthProviderOrSessionWrapper>
           <ThemeProvider
             // attribute="class"
