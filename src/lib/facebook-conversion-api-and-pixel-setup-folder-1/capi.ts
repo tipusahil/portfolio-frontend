@@ -23,6 +23,7 @@ total 3ta folder er modde (facebook conversion api and pixel setup) er jabotio s
 1. --> src/lib/(facebook-conversion-api-and-pixel-setup-folder-1) : ei folder ta 
 2. --> src/app/api/(meta/capi/route.ts) : ei file ta// evabei rakte hobe.
 3. --> FacebookPixelProvider-folder-2 : ei folder ta ekdom .env er layer e eta ase.
+4. --> .env files er meta er variables gulo takte hobe.
 */
 
 /* -------------------------------------------------------------------------- */
