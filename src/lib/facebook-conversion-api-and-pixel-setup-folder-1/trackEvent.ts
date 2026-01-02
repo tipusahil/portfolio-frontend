@@ -1,5 +1,6 @@
 import crypto from "crypto";
 import { getFacebookCookies } from "./utils/getFacebookCookies";
+import { generateUUID } from "./generateUUID";
 
 export const trackMetaEvent = ({
   eventName,
@@ -10,7 +11,7 @@ export const trackMetaEvent = ({
   userData?: any;
   customData?: any;
 }) => {
-  const eventID = crypto.randomUUID();
+  const eventID = generateUUID(); // ✅ Browser-safe UUID
 
   const { fbp, fbc } = getFacebookCookies();
 
