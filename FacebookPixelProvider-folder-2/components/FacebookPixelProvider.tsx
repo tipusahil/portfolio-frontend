@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { trackMetaEvent } from "@/lib/facebook-conversion-api-and-pixel-setup-folder-1/trackEvent";
 
 declare global {
   interface Window {
@@ -15,7 +16,8 @@ export const FacebookPixelProvider = () => {
 
   useEffect(() => {
     if (!window.fbq) return;
-    window.fbq("track", "PageView");
+    // window.fbq("track", "PageView");
+    trackMetaEvent({ eventName: "PageView" }); // -- এটা ব্যবহার করুন
   }, [pathname]);
 
   return (

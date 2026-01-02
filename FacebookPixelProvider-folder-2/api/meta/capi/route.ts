@@ -2,26 +2,33 @@ import { sendToMetaCAPI } from "@/lib/facebook-conversion-api-and-pixel-setup-fo
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
+  try {
+    const body = await req.json();
 
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0] ||
-    req.headers.get("x-real-ip") ||
-    undefined;
+    // ✅ IP এবং User Agent server থেকে নিচ্ছি (secure)
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0] ||
+      req.headers.get("x-real-ip") ||
+      undefined;
 
-  const userAgent = req.headers.get("user-agent") || undefined;
+    const userAgent = req.headers.get("user-agent") || undefined;
 
-  await sendToMetaCAPI({
-    eventName: body.eventName,
-    eventID: body.eventID,
-    eventSourceUrl: body.eventSourceUrl,
-    userData: {
-      ...body.userData,
-      ip,
-      userAgent,
-    },
-    customData: body.customData,
-  });
+    const result = await sendToMetaCAPI({
+      eventName: body.eventName,
+      eventID: body.eventID,
+      eventSourceUrl: body.eventSourceUrl,
+      userData: {
+        ...body.userData,
+        ip,
+        userAgent,
+      },
+      customData: body.customData,
+      testEventCode: process.env.FB_TEST_EVENT_CODE, // ✅ .env থেকে নিচ্ছে
+    });
 
-  return NextResponse.json({ success: true });
+    return NextResponse.json(result);
+  } catch (error) {
+    console.error("❌ CAPI Route Error:", error);
+    return NextResponse.json({ success: false, error }, { status: 500 });
+  }
 }

@@ -14,18 +14,18 @@ export const trackMetaEvent = ({
 
   const { fbp, fbc } = getFacebookCookies();
 
-  // 🔵 Pixel
+  // 🔵 Pixel (Browser-side)
   if (typeof window !== "undefined" && window.fbq) {
     window.fbq("track", eventName, customData, { eventID });
   }
 
-  // 🔴 CAPI (fire & forget)
+  // 🔴 CAPI (Server-side via API route)
   fetch("/api/meta/capi", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       eventName,
-      eventID,
+      eventID, // ✅ Same eventID = deduplication
       eventSourceUrl:
         typeof window !== "undefined" ? window.location.href : undefined,
       userData: {
@@ -35,5 +35,7 @@ export const trackMetaEvent = ({
       },
       customData,
     }),
-  }).catch(() => {});
+  }).catch((err) => {
+    console.error("❌ CAPI fetch error:", err);
+  });
 };

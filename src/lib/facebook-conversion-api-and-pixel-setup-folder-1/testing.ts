@@ -23,6 +23,7 @@ export const testCAPIConnection = async () => {
       userAgent: "Mozilla/5.0 Test",
     },
     eventSourceUrl: "https://test.example.com",
+    testEventCode: process.env.FB_TEST_EVENT_CODE ?? "",
   }) as { success?: boolean; response?: any; error?: any } | undefined;
 
   if (result?.success) {
