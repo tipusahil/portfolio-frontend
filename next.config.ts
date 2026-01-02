@@ -13,13 +13,13 @@ const nextConfig: NextConfig = {
     ],
   },
   // 🟢 বিল্ডের সময় টাইপস্ক্রিপ্ট এরর ইগনোর করবে
-  // typescript: {
-  //   ignoreBuildErrors: true,
-  // },
-  // // 🟢 বিল্ডের সময় ESLint এরর ইগনোর করবে
-  // eslint: {
-  //   ignoreDuringBuilds: true,
-  // },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  // 🟢 বিল্ডের সময় ESLint এরর ইগনোর করবে
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { trackMetaEvent } from "../../src/lib/facebook-conversion-api-and-pixel-setup-folder-1/trackEvent";
 
 
+//  ei file ta thank-you/page.tsx : route/server file e call korte hobe 
 /* 
 🧠 PART 0: Lead vs CompleteRegistration (Truth)
 ❌ ভুল (৯০% মানুষ করে)
